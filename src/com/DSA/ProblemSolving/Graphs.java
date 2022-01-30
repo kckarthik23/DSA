@@ -1,4 +1,4 @@
-package com.DSA.Graphs;
+package com.DSA.ProblemSolving;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

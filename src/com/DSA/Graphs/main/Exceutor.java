@@ -1,6 +1,6 @@
 package com.DSA.Graphs.main;
 
-import com.DSA.Graphs.Graphs;
+import com.DSA.ProblemSolving.Graphs;
 
 public class Exceutor {
 

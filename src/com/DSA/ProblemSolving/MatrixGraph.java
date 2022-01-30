@@ -1,4 +1,4 @@
-package com.DSA.Graphs;
+package com.DSA.ProblemSolving;
 
 public class MatrixGraph {
 
