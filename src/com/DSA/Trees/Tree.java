@@ -2,6 +2,7 @@ package com.DSA.Trees;
 
 public class Tree {
 	Node root;
+	static int prev = Integer.MIN_VALUE;
 
 	class Node {
 		int val;
@@ -37,15 +38,40 @@ public class Tree {
 			System.out.println(root.val);
 		}
 	}
-	
-	public static int depthOfTree(Node root)
-	{
-		if(root==null)
+
+	public static int depthOfTree(Node root) {
+		if (root == null)
 			return -1;
-		else
-		{
-			return 1+Math.max(depthOfTree(root.left), depthOfTree(root.right));
+		else {
+			return 1 + Math.max(depthOfTree(root.left), depthOfTree(root.right));
 		}
+	}
+
+	public static boolean isBST(Node root) {
+		int min = Integer.MIN_VALUE;
+		int max = Integer.MAX_VALUE;
+		return isBST(root, min, max);
+	}
+
+	private static boolean isBST(Node root2, int min, int max) {
+		if (root2 == null)
+			return true;
+
+		return (root2.val > min && root2.val < max && isBST(root2.left, min, root2.val)
+				&& isBST(root2.right, root2.val, max));
+	}
+
+	public static boolean isBSTEffcient(Node root) {
+
+		if (root == null)
+			return true;
+		if (isBST(root.left) == false)
+			return false;
+		if (root.val < prev)
+			return false;
+		prev = root.val;
+		return isBST(root.right);
+
 	}
 
 	public static void main(String[] args) {
@@ -75,7 +101,10 @@ public class Tree {
 		System.out.println("-------------");
 		postOrder(t.root);
 		System.out.println("-------------");
-		System.out.println("Depth or Height of the tree is --->> "+depthOfTree(t.root));;
+		System.out.println("Depth or Height of the tree is --->> " + depthOfTree(t.root));
+		System.out.println("--------------");
+		System.out.println("is binary Tree " + isBST(t.root));
+		;
 	}
 
 }
