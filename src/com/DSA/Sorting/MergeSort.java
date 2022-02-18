@@ -11,7 +11,7 @@ public class MergeSort {
             mergeSort(arr,mid+1, last);
             merge(arr,start,mid,last);
         }
-        
+        return null;
     }
 
     private static void merge(int[] arr, int start, int mid,int last) {
