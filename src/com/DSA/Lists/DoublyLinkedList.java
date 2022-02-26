@@ -42,6 +42,36 @@ public class DoublyLinkedList {
         }
     }
 
+    public void deleteNode(int val) {
+        if (this.head == null)
+            return;
+        if (this.head.val == val) {
+            Node tentHead = this.head.next;
+            this.head.next = null;
+            this.head = tentHead;
+            this.head.prev = null;
+        } else if (this.tail.val == val) {
+            Node tentTail = this.tail.prev;
+            this.tail.prev = null;
+            this.tail = tentTail;
+            this.tail.next = null;
+        } else {
+            Node cur = this.head;
+            Node prev = null;
+            while (cur != null && cur.val != val) {
+                prev = cur;
+                cur = cur.next;
+            }
+            if (cur == null)
+                return;
+            prev.next = cur.next;
+            cur.next.prev = prev;
+            cur.next = null;
+            cur.prev = null;
+
+        }
+    }
+
     public void traverseDoublyLinkedList(Node head) {
 
         Node cur = head;
@@ -76,13 +106,20 @@ public class DoublyLinkedList {
         db.insertAtEnd(20);
         db.insertAtEnd(30);
         db.insertAtEnd(40);
+        db.insertAtEnd(40);
         db.insertAtEnd(50);
         db.insertAtEnd(60);
         db.insertAthead(5);
+        db.insertAthead(4);
+        db.traverseDoublyLinkedList(db.head);
 
+        db.deleteNode(4); // deleting the head
+        db.deleteNode(40); // deleting middle
+        db.deleteNode(60); // deleting tail
+        System.out.println("--------after deleting operations ---------");
         db.traverseDoublyLinkedList(db.head);
         db.reverseDoublyLinkedList(db.head);
-        System.out.println("---after reversing the doubly linked list------ ");
+        System.out.println("---after reversing the doubly linked list---");
         db.traverseDoublyLinkedList(db.head);
 
     }
