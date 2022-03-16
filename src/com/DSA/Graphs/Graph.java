@@ -115,14 +115,25 @@ public class Graph {
 		undirected.addEdge(3, 4);
 
 		Graph directed = new Graph(5);
-		directed.addEdge(0, 1);
-		directed.addEdge(0, 3);
-		directed.addEdge(1, 2);
-		directed.addEdge(3, 4);
+		directed.addEdgeDirected(0, 1);
+		directed.addEdgeDirected(0, 3);
+		directed.addEdgeDirected(1, 2);
+		directed.addEdgeDirected(3, 4);
+
+		Graph directed1 = new Graph(5);
+		directed1.addEdgeDirected(0, 1);
+		directed1.addEdgeDirected(0, 2);
+		directed1.addEdgeDirected(3, 4);
+
 		boolean[] visited = new boolean[size];
 
-		directed.depthFirstSearch(0, visited, 0, true);
+		//directed.depthFirstSearch(0, visited, 0, true);
 		boolean vistedComplex[] = new boolean[size];
+		
+		Kahn_s_topological_Sorting khts=new Kahn_s_topological_Sorting();
+		Topological_Sorting_DFS tsdfs=new Topological_Sorting_DFS();
+		//tsdfs.topologicalSortDFS(directed1, size);
+		khts.topoSorting(directed1, size);
 		// System.out.println(" ");
 		// undirected.breadthFirstsearch(0, visited);
 		// undirected.printGraph();
