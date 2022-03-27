@@ -21,8 +21,11 @@ public class Oops extends OopsParent {
     }
 
     public static void main(String[] args) {
-        Oops child = new Oops();
-        child.print();
+       // Oops child = new Oops();
+       // child.print();
+       int num=-4;
+       int mn2=-5;
+       System.out.println(num*mn2);
 
     }
 
